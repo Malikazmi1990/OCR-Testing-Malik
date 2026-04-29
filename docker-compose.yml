@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - VITE_GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped
+
+  # Development service (optional)
+  dev:
+    image: node:20-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}

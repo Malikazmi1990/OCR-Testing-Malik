@@ -1,0 +1,22 @@
+{
+  "name": "identity-lens-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @id-lens/web\" \"npm run dev -w @id-lens/server\"",
+    "build": "npm run build -w @id-lens/web",
+    "start": "NODE_ENV=production npm run start -w @id-lens/server",
+    "lint": "npm run lint -w @id-lens/web",
+    "clean": "rm -rf apps/web/dist"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.2"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

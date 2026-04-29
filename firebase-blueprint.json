@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "Document": {
+      "title": "Identity Document",
+      "description": "Extracted data from identity documents like Visas and Passports.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "documentNumber": { "type": "string" },
+        "documentType": { "type": "string" },
+        "nationality": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "resultAr": { "type": "object", "description": "Arabic translation of the document data" }
+      },
+      "required": ["fullName", "ownerId", "createdAt"]
+    },
+    "ApiKey": {
+      "title": "API Key",
+      "description": "User API keys for external platform integration.",
+      "type": "object",
+      "properties": {
+        "key": { "type": "string" },
+        "uid": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["key", "uid", "active", "createdAt"]
+    }
+  },
+  "firestore": {
+    "documents": {
+      "schema": "Document",
+      "description": "Collection of extracted identity documents"
+    },
+    "api_keys": {
+      "schema": "ApiKey",
+      "description": "Collection of user API keys"
+    }
+  }
+}
